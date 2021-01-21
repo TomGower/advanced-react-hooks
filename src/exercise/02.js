@@ -51,11 +51,11 @@ function useAsync(asyncCallback, initialState, dependencies) {
     )
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies)
+
+  return state;
 }
 
 function PokemonInfo({pokemonName}) {
-  // 🐨 move both the useReducer and useEffect hooks to a custom hook called useAsync
-  // here's how you use it:
   const state = useAsync(
     () => {
       if (!pokemonName) {
@@ -66,9 +66,7 @@ function PokemonInfo({pokemonName}) {
     {status: pokemonName ? 'pending' : 'idle'},
     [pokemonName],
   )
-  // 🐨 so your job is to create a useAsync function that makes this work.
 
-  // 🐨 this will change from "pokemon" to "data"
   const {data: pokemon, status, error} = state
 
   if (status === 'idle' || !pokemonName) {
