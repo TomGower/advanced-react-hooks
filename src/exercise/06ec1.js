@@ -3,14 +3,12 @@
 
 import * as React from 'react'
 
-// for extra credit 1
 const formatDebugValue = ({query, state}) => (
   `\`${query}\` => ${state}`
 )
 
 function useMedia(query, initialState = false) {
   const [state, setState] = React.useState(initialState)
-  // formatting function added for extra credit 1
   React.useDebugValue({query, state}, formatDebugValue)
 
   React.useEffect(() => {
